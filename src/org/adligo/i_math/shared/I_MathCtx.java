@@ -37,5 +37,11 @@ public interface I_MathCtx {
    */
   BigInteger gcd(BigInteger a,BigInteger b);
 	
+  /**
+  * https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
+  * @param a
+  * @param b
+  * @return
+  */
   I_EgcdResult egcd(BigInteger a, BigInteger b);
 }

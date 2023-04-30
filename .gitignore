@@ -23,9 +23,12 @@
 hs_err_pid*
 replay_pid*
 
+.classpath
 /.gradle
 /.idea
 /gradle
 gradlew
 gradlew.bat
 /bin/
+/.settings
+
