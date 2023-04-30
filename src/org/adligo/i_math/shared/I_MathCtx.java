@@ -28,14 +28,6 @@ import java.math.BigInteger;
  * </code><pre>
  */
 public interface I_MathCtx {
-  
-  /**
-   * https://en.wikipedia.org/wiki/Euclidean_algorithm
-   * @param the a
-   * @param b
-   * @return
-   */
-  BigInteger gcd(BigInteger a,BigInteger b);
 	
   /**
   * https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm

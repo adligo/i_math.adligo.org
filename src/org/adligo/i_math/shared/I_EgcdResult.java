@@ -3,7 +3,8 @@ package org.adligo.i_math.shared;
 import java.math.BigInteger;
 
 /**
- * <br/>
+ * The result of a Extended GCD function; 
+ * https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm <br/>
  * <br/>
  * 
  * @author scott<br/>
