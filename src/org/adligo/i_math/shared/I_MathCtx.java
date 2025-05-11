@@ -10,7 +10,7 @@ import java.math.BigInteger;
  *         <br/>
  * 
  * <pre><code>
- * ---------------- Apache ICENSE-2.0 --------------------------
+ * ---------------- Apache LICENSE-2.0 --------------------------
  *
  * Copyright 2022 Adligo Inc
  * 
