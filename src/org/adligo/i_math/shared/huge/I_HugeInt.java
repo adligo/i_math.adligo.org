@@ -1,8 +1,9 @@
-package org.adligo.i_math.shared;
+package org.adligo.i_math.shared.huge;
 
 import java.math.BigInteger;
+import java.util.stream.IntStream;
 
-/*
+/**
 * This is a interface that represents a integer of unlimited size as it is backed by a linked list of IntArrayLinks. Each IntArrayLink will contain up to 8 ints.  <br/>
 * <br/>
 * 
@@ -28,7 +29,7 @@ import java.math.BigInteger;
 * </code><pre>
 */
 
-public interface I_HugeInt {
+public interface I_HugeInt extends I_Hugeable {
 
     /**
      * Adds another I_HugeInt to this one and returns the result
@@ -38,62 +39,29 @@ public interface I_HugeInt {
      */
     I_HugeInt add(I_HugeInt other);
     
-	
-	/**
-	 * @return true if the int is less than 7 bits / 1 byte
-	 */
-	boolean isByte();
-	/**
-	 * @return true if the int is less than 15 bits / 2 byte
-	 */
-	boolean isShort();
-	/**
-	 * @return true if the int is less than 31 bits / 4 byte
-	 */
-	boolean isInt();
-	/**
-	 * @return true if the int is less than 63 bits / 6 byte
-	 */
-	boolean isLong();
-	/**
-	 * @return true if the int will fit in a <{@link BigInteger}>
-	 */
-	boolean isBig();
-	
 	/**
 	 * @return true if this is zero or greater, false if it is a negative number
 	 */
 	boolean isPositive();
+
+	/**
+	 * returns true of the current value of this is greater than the long i being passed in.
+	 * @param i
+	 * @return
+	 */
+	boolean isGreaterThan(long i);
 	
 	/**
-	 * 
-	 * @return a byte representing this number
+	 * returns a stream of the underlying data, from little to bigending
+	 * @return
 	 */
-	byte toByte();
+	IntStream toStream();
 	
 	/**
-	 * 
-	 * @return a short representing this number
+	 * returns a stream of the underlying data, from little to bigending when the littleToBig is true
+	 * , otherwise from big to littlending. 
+	 * @param littleToBig 
+	 * @return
 	 */
-	short toShort();
-	
-	/**
-	 * 
-	 * @return a int representing this number
-	 */
-	int toInt();
-	
-	/**
-	 * 
-	 * @return a long representing this number
-	 */
-	long toLong();
-	
-	/**
-	 * 
-	 * @return a <{@link BigInteger}> representing this number
-	 */
-	BigInteger toBig();
-	
-	
+	IntStream toStream(boolean littleToBig);
 }
