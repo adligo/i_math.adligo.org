@@ -1,10 +1,11 @@
 package org.adligo.i_math.shared.huge;
 
 import java.math.BigInteger;
-import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
-* This is a interface that represents a integer of unlimited size as it is backed by a linked list of IntArrayLinks. Each IntArrayLink will contain up to 8 ints.  <br/>
+* This is a interface that represents a integer of unlimited size as may be backed by a RAM based data structure,
+* or a external data structure (data on disk, or data obtained through a service).   <br/>
 * <br/>
 * 
 * @author scott<br/>
@@ -38,7 +39,21 @@ public interface I_HugeInt extends I_Hugeable {
      * @return a new I_HugeInt representing the sum
      */
     I_HugeInt add(I_HugeInt other);
+
+    /**
+     * This method performs the add operation passing the data to the buffer,
+     * then it creates a new HugeInt by backing it with the data in the buffer.
+     * @param other
+     * @param buffer
+     * @return
+     */
+    I_HugeInt add(I_HugeInt other, I_HugeIntBuffer buffer);
     
+    /**
+     * @return true if this number is in Ram, otherwise some of the number may be 
+     * on disk or in a database etc.
+     */
+    boolean isInRam();
 	/**
 	 * @return true if this is zero or greater, false if it is a negative number
 	 */
@@ -53,9 +68,10 @@ public interface I_HugeInt extends I_Hugeable {
 	
 	/**
 	 * returns a stream of the underlying data, from little to bigending
-	 * @return
+	 * @return a stream of BigIntegers, which will contain a null on termination.
+	 *   The BigIntegers will be positive number between {@link BigInteger}.ZERO and {@link HugeConstants}.MAX_CHUNK
 	 */
-	IntStream toStream();
+	Stream<BigInteger> toStream();
 	
 	/**
 	 * returns a stream of the underlying data, from little to bigending when the littleToBig is true
@@ -63,5 +79,5 @@ public interface I_HugeInt extends I_Hugeable {
 	 * @param littleToBig 
 	 * @return
 	 */
-	IntStream toStream(boolean littleToBig);
+	Stream<BigInteger> toStream(boolean littleToBig);
 }
